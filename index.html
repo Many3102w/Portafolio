@@ -439,12 +439,15 @@
               rotation-per-second="16deg"
               ar
               ar-modes="webxr scene-viewer quick-look"
+              ar-placement="floor"
+              ar-scale="auto"
               shadow-intensity="1"
+              shadow-softness="0.8"
               exposure="1"
               camera-orbit="30deg 80deg auto"
               field-of-view="32deg"
               interaction-prompt="auto">
-              <button slot="ar-button" class="ar-btn">📱 Ver en tu espacio (AR)</button>
+              <button slot="ar-button" class="ar-btn">📱 Colocar en el piso (AR)</button>
               <div slot="poster" class="viewer3d__poster">Cargando modelo 3D…</div>
             </model-viewer>
             <div class="showcase__dots" aria-hidden="true">
@@ -457,7 +460,7 @@
               <span class="showcase__dot"></span>
               <span class="showcase__dot"></span>
             </div>
-            <p class="viewer3d__hint">Desplázate para cambiar de modelo · arrastra para girar · AR en el móvil</p>
+            <p class="viewer3d__hint">Desplázate para cambiar de modelo · arrastra para girar · en el móvil, pulsa <strong>AR</strong>, apunta al <strong>piso</strong> y camina alrededor de la figura</p>
 
             <!-- Control del modelo con la mano (cámara + detección de manos) -->
             <div class="hand">
