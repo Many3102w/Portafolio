@@ -70,6 +70,8 @@ pantalla. Modelos de muestra:
 | 🚰 Casa de bombas | `assets/casa-bombas.glb` |
 | 🏭 Techado de taller | `assets/techado-taller.glb` |
 | 🏗️ Maquinaria pesada (excavadora) | `assets/excavadora.glb` |
+| 🔌 Electrónica — placa ESP32 | `assets/esp32.glb` |
+| 📡 Electrónica — DWM1001-DEV (UWB) | `assets/dwm1001-dev.glb` |
 | 🗼 Torre | `assets/modelo.glb` |
 
 Los modelos de muestra se generaron con **trimesh**:
@@ -77,6 +79,7 @@ Los modelos de muestra se generaron con **trimesh**:
 - `generar_modelos_obra.py` → obra civil (dados de colado) y techado de taller
 - `generar_casa_bombas.py` → casa de bombas
 - `generar_excavadora.py` → excavadora hidráulica sobre orugas (estilo DEVELON)
+- `generar_placas.py` → placas electrónicas ESP32 y DWM1001-DEV (PCB)
 - `generar_modelo.py` → torre
 
 Para poner **tus propios diseños de AutoCAD**:
