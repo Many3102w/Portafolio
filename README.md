@@ -69,12 +69,14 @@ pantalla. Modelos de muestra:
 | ⚙️ Obra mecánica (tubería) | `assets/obra-mecanica.glb` |
 | 🚰 Casa de bombas | `assets/casa-bombas.glb` |
 | 🏭 Techado de taller | `assets/techado-taller.glb` |
-| 🏗️ Torre | `assets/modelo.glb` |
+| 🏗️ Maquinaria pesada (excavadora) | `assets/excavadora.glb` |
+| 🗼 Torre | `assets/modelo.glb` |
 
 Los modelos de muestra se generaron con **trimesh**:
 - `generar_modelos_industriales.py` → tanque y obra mecánica
 - `generar_modelos_obra.py` → obra civil (dados de colado) y techado de taller
 - `generar_casa_bombas.py` → casa de bombas
+- `generar_excavadora.py` → excavadora hidráulica sobre orugas (estilo DEVELON)
 - `generar_modelo.py` → torre
 
 Para poner **tus propios diseños de AutoCAD**:
