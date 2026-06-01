@@ -217,6 +217,31 @@ a { color: inherit; text-decoration: none; }
 .ar-btn:hover { opacity: 0.92; }
 .viewer3d__hint { text-align: center; color: var(--muted); font-size: 0.84rem; margin-top: 14px; }
 
+/* ── Control con la mano (cámara) ── */
+.hand { text-align: center; margin-top: 14px; }
+.hand__btn {
+  background: var(--surface-2); color: var(--text); border: 0;
+  padding: 11px 20px; border-radius: 999px; font-weight: 600;
+  font-size: 0.92rem; cursor: pointer; transition: background .2s, transform .2s, box-shadow .2s;
+}
+.hand__btn:hover { transform: translateY(-2px); background: #20252f; }
+.hand__btn.is-active { background: var(--grad); color: #fff; box-shadow: var(--glow); }
+.hand__btn:disabled { opacity: .6; cursor: progress; }
+.hand__cam {
+  position: relative; width: 180px; margin: 14px auto 0;
+  border-radius: 14px; overflow: hidden; background: var(--surface);
+  box-shadow: 0 10px 30px -14px rgba(0,0,0,.8);
+}
+.hand__cam video {
+  display: block; width: 100%; height: auto;
+  transform: scaleX(-1);            /* espejo, como un selfie */
+}
+.hand__status {
+  display: block; padding: 7px 10px; font-size: 0.78rem;
+  color: var(--muted); background: var(--surface);
+}
+.hand__hint { text-align: center; color: var(--muted); font-size: 0.82rem; margin-top: 10px; }
+
 /* ─────────────────────────── Timeline ─────────────────────────── */
 .timeline { position: relative; padding-left: 30px; max-width: 760px; }
 .timeline::before { content: ''; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: rgba(255, 255, 255, 0.08); }
