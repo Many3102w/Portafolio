@@ -82,6 +82,13 @@ Los modelos de muestra se generaron con **trimesh**:
 - `generar_placas.py` → placas electrónicas ESP32 y DWM1001-DEV (PCB)
 - `generar_modelo.py` → torre
 
+**Interacción extra del visor 3D:**
+- **Controlar con la mano** (`hand-control.js`): usa la cámara y MediaPipe para girar
+  el modelo moviendo la mano (pellizco = zoom).
+- **Decorar el piso en AR** (`ar-piso.html`): experiencia WebXR (Three.js) que detecta
+  el suelo y deja caer figuras decorativas al tocar la pantalla. Requiere Android + Chrome
+  con ARCore (gratis, sin librerías de pago).
+
 Para poner **tus propios diseños de AutoCAD**:
 1. En AutoCAD, exporta tu diseño 3D a **FBX**, **OBJ** o **STL** (comando `EXPORT` / `FBXEXPORT`).
 2. Conviértelo a **GLB** (el formato de la web). Opciones gratis:
