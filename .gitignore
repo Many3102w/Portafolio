@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Vistas previas temporales del visor 3D
+**/_preview_*.png

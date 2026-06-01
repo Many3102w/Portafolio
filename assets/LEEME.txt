@@ -1,0 +1,9 @@
+Pon aquí tus imágenes (foto de perfil, capturas de proyectos, etc.).
+
+Para usar tu foto en el hero:
+   1. Guarda tu foto como  assets/foto.jpg
+   2. En index.html, dentro de <div class="hero__avatar">, reemplaza el
+      bloque del avatar por:
+         <img src="assets/foto.jpg" alt="Tu Nombre" class="hero__photo">
+
+Cuando agregues tus imágenes, puedes borrar este archivo LEEME.txt.

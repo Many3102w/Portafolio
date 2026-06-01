@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Christopher Gómez Martínez · Ing. Industrial y de Sistemas + Desarrollo web/APK</title>
+  <meta name="description" content="Christopher Manfred Gómez Martínez — Ingeniería Industrial y de Sistemas. Combino el trabajo industrial en los puertos de Altamira (andamios, pailería, soldadura) con el desarrollo de páginas web y aplicaciones Android (APK)." />
+  <meta name="author" content="Christopher Manfred Gómez Martínez" />
+
+  <!-- Vista previa al compartir el enlace (Open Graph) -->
+  <meta property="og:title" content="Christopher Gómez Martínez · Industrial + Desarrollo web/APK" />
+  <meta property="og:description" content="Ingeniería Industrial y de Sistemas: trabajo industrial (andamios, pailería, soldadura) + desarrollo de páginas web y apps Android (APK). Disponibilidad para viajar." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (inicial). -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232f81ff'/><text x='50' y='68' font-size='56' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>C</text></svg>" />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Marca que hay JS disponible (para las animaciones); sin JS, el contenido se ve igual -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Visor de modelos 3D (model-viewer de Google) -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░ NAVEGACIÓN ░░░░░░░░░░░░░░░░░░░░░░░ -->
+  <header class="nav" id="inicio">
+    <nav class="nav__inner container">
+      <a href="#inicio" class="nav__brand">
+        <span class="nav__logo">CG</span>
+        Christopher Gómez
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#perfil">Perfil</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#software">Software</a></li>
+        <li><a href="#diseno3d">Diseño 3D</a></li>
+        <li><a href="#contacto" class="nav__cta">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░ HERO ░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__text reveal">
+          <p class="hero__eyebrow">👋 Hola, soy</p>
+          <h1 class="hero__name">Christopher Gómez Martínez</h1>
+          <h2 class="hero__role">
+            <span class="hero__role-static">Soy</span>
+            <span class="hero__role-typed" id="typed"></span>
+            <span class="hero__cursor">|</span>
+          </h2>
+          <p class="hero__tagline">
+            Mi carrera, <strong>Ingeniería Industrial y de Sistemas</strong>, define mi perfil:
+            uno el trabajo industrial de campo en los puertos de Altamira (andamios, pailería y
+            soldadura) con el desarrollo de software —<strong>páginas web</strong> y
+            <strong>aplicaciones Android (APK)</strong>—. Disponibilidad para viajar a cualquier lugar.
+          </p>
+
+          <div class="hero__actions">
+            <a href="cv/CV_Christopher_Gomez_Martinez.pdf" class="btn btn--primary" download>
+              ⬇ Descargar CV
+            </a>
+            <a href="#software" class="btn btn--ghost">Ver mi trabajo</a>
+          </div>
+
+          <ul class="hero__socials">
+            <li><a href="mailto:kikinmanfred@gmail.com" aria-label="Correo">Email</a></li>
+            <li><a href="https://wa.me/528146015247" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a></li>
+            <li><a href="tel:+528146015247" aria-label="Teléfono">814 601 5247</a></li>
+          </ul>
+        </div>
+
+        <div class="hero__avatar reveal">
+          <!-- Figuras 3D que cambian solas cada 4 s (ver script.js, sección 6).
+               Para volver al avatar de iniciales o a una foto, reemplaza el <model-viewer> por:
+               <div class="avatar"><span class="avatar__initials">CG</span></div>   o
+               <img src="assets/foto.jpg" alt="Christopher Gómez" class="hero__photo"> -->
+          <model-viewer
+            class="hero3d"
+            id="hero3d"
+            src="assets/tanque.glb"
+            alt="Diseños 3D industriales"
+            camera-controls
+            auto-rotate
+            auto-rotate-delay="0"
+            rotation-per-second="22deg"
+            interaction-prompt="none"
+            shadow-intensity="1"
+            exposure="1"
+            camera-orbit="30deg 78deg auto"
+            field-of-view="30deg"
+            loading="eager"
+            disable-tap>
+            <div slot="poster" class="viewer3d__poster">Cargando 3D…</div>
+          </model-viewer>
+          <div class="hero__badge">Disponible para viajar</div>
+        </div>
+      </div>
+
+      <a href="#perfil" class="hero__scroll" aria-label="Bajar">↓</a>
+    </section>
+
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░ PERFIL ░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section class="section" id="perfil">
+      <div class="container">
+        <p class="section__kicker">01 — Perfil</p>
+        <h2 class="section__title">Dos mundos, un mismo perfil</h2>
+
+        <div class="about reveal">
+          <div class="about__text">
+            <p>
+              Soy Christopher Manfred Gómez Martínez, egresado de
+              <strong>Ingeniería Industrial y de Sistemas</strong> (carta pasante). Mi perfil une
+              dos mundos: por un lado, la experiencia <strong>industrial</strong> en los principales
+              puertos de Altamira —armado de andamios (fijos, de fachada, móviles, voladizos y
+              multidireccionales hasta 5–6 plantas), pailería y punteo de soldadura—; por otro, el
+              <strong>desarrollo de software</strong>, donde creo páginas web y aplicaciones Android (APK).
+            </p>
+            <p>
+              Esta combinación me permite aportar tanto en campo como en la parte técnica y
+              administrativa: reportes, software técnico y automatización. He participado en
+              proyectos de plantas, paros de mantenimiento y obra mecánica, eléctrica y civil.
+              Busco un puesto donde pueda <strong>sumar mi experiencia industrial y mis habilidades
+              de programación</strong>.
+            </p>
+            <ul class="about__facts">
+              <li><strong>📍 Ubicación:</strong> Altamira, Tamaulipas, México</li>
+              <li><strong>🎓 Carrera:</strong> Ing. Industrial y de Sistemas (carta pasante)</li>
+              <li><strong>✈️ Disponibilidad:</strong> Para viajar a cualquier lugar</li>
+              <li><strong>🗣 Idiomas:</strong> Español (nativo) · Inglés básico</li>
+            </ul>
+          </div>
+
+          <div class="about__stats">
+            <div class="stat"><span class="stat__num">4+</span><span class="stat__label">Años en la industria</span></div>
+            <div class="stat"><span class="stat__num">7+</span><span class="stat__label">Empresas / proyectos</span></div>
+            <div class="stat"><span class="stat__num">Web</span><span class="stat__label">+ Apps Android (APK)</span></div>
+            <div class="stat"><span class="stat__num">4</span><span class="stat__label">Certificaciones de seguridad</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░ HABILIDADES ░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section class="section section--alt" id="habilidades">
+      <div class="container">
+        <p class="section__kicker">02 — Habilidades</p>
+        <h2 class="section__title">Habilidades y conocimientos</h2>
+
+        <div class="skills reveal">
+          <div class="skill-group">
+            <h3>🏗️ Andamios e izaje</h3>
+            <div class="tags">
+              <span class="tag">Andamios fijos</span>
+              <span class="tag">De fachada</span>
+              <span class="tag">Móviles</span>
+              <span class="tag">Voladizos</span>
+              <span class="tag">Multidireccionales (Layher)</span>
+              <span class="tag">Genie</span>
+              <span class="tag">Manlift</span>
+              <span class="tag">Maniobras</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>🔧 Pailería y soldadura</h3>
+            <div class="tags">
+              <span class="tag">Pailería Tipo A</span>
+              <span class="tag">Punteo</span>
+              <span class="tag">Flux core</span>
+              <span class="tag">Galvanizado</span>
+              <span class="tag">Acero al carbón</span>
+              <span class="tag">Inoxidable</span>
+              <span class="tag">Probetas</span>
+              <span class="tag">Arcair</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>⚙️ Obra y tubería</h3>
+            <div class="tags">
+              <span class="tag">Obra mecánica</span>
+              <span class="tag">Obra eléctrica</span>
+              <span class="tag">Obra civil</span>
+              <span class="tag">Tubería</span>
+              <span class="tag">Bridas y empaques</span>
+              <span class="tag">Colados</span>
+              <span class="tag">Armado de varilla</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>⌨️ Programación</h3>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">Python</span>
+              <span class="tag">React</span>
+              <span class="tag">Django</span>
+              <span class="tag">Android Studio (APK)</span>
+              <span class="tag">ESP32</span>
+              <span class="tag">IA (ChatGPT · Copilot · Gemini)</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>💻 Software técnico</h3>
+            <div class="tags">
+              <span class="tag">AutoCAD</span>
+              <span class="tag">Visio</span>
+              <span class="tag">Excel</span>
+              <span class="tag">Word</span>
+              <span class="tag">PowerPoint</span>
+              <span class="tag">Access</span>
+              <span class="tag">PowerShell</span>
+              <span class="tag">Canva</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>🖥️ Soporte y hardware</h3>
+            <div class="tags">
+              <span class="tag">Armado y reparación de PC</span>
+              <span class="tag">Cambio de componentes</span>
+              <span class="tag">Formateo e instalación de Windows</span>
+              <span class="tag">Redes básicas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░ EXPERIENCIA ░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section class="section" id="experiencia">
+      <div class="container">
+        <p class="section__kicker">03 — Experiencia industrial</p>
+        <h2 class="section__title">Dónde he trabajado</h2>
+
+        <div class="timeline reveal">
+          <div class="timeline__item">
+            <span class="timeline__dot"></span>
+            <span class="timeline__date">Ene 2025</span>
+            <h3 class="timeline__role">Pailero Tipo A</h3>
+            <p class="timeline__org">MEGSA · Puerto Industrial Altamira</p>
+            <p class="timeline__desc">
+              Trabajo en tanques de membrana y pontones en acero al carbón: empate y ajuste de
+              la membrana, punteo y operación de Genie para retirar la cinta de protección de la soldadura.
+            </p>
+          </div>
+
+          <div class="timeline__item">
+            <span class="timeline__dot"></span>
+            <span class="timeline__date">Ago 2024 · 4 meses</span>
+            <h3 class="timeline__role">Ayudante de Soldador / Punteador Flux Core</h3>
+            <p class="timeline__org">McDermott · Puerto Industrial Altamira</p>
+            <p class="timeline__desc">
+              Proyecto Manatee: fabricación de contenedores con soldadura flux core. Punteo y
+              elaboración de probetas en posición sobremesa, vertical y sobre cabeza; arcair con carbones.
+            </p>
+          </div>
+
+          <div class="timeline__item">
+            <span class="timeline__dot"></span>
+            <span class="timeline__date">Jul 2024 · 1 mes (paro de planta)</span>
+            <h3 class="timeline__role">Andamiero de Primera</h3>
+            <p class="timeline__org">Mexichem (subcontratista de Águila) · Valle Esmeralda</p>
+            <p class="timeline__desc">
+              Zona de resinas: armado de andamios Layher multidireccionales y voladizos dentro de
+              tanques, con gatos giratorios; torre móvil, fija y de fachada.
+            </p>
+          </div>
+
+          <div class="timeline__item">
+            <span class="timeline__dot"></span>
+            <span class="timeline__date">Jun 2024 · 1 mes (paro de planta)</span>
+            <h3 class="timeline__role">Andamiero de Primera</h3>
+            <p class="timeline__org">Secoivsa (Alpek) · Puerto Industrial</p>
+            <p class="timeline__desc">
+              Andamios voladizos para la tubería de ácido acético y trabajo en espacios confinados
+              con andamios multidireccionales. Apoyo a tuberos: apertura de bridas, empaques y manejo de tecles.
+            </p>
+          </div>
+
+          <div class="timeline__item">
+            <span class="timeline__dot"></span>
+            <span class="timeline__date">Mar 2024 · 1 mes (paro de planta)</span>
+            <h3 class="timeline__role">Auxiliar de Bombero</h3>
+            <p class="timeline__org">Beria Energy (subcontratista de PEMEX) · Playa de Madero</p>
+            <p class="timeline__desc">
+              Cambio de bridas, reparación de material, pintado y sandblasteo. Desarmado y armado
+              de válvulas con liberación previa de presión; apoyo ante altas temperaturas y emisión de gases.
+            </p>
+          </div>
+
+          <div class="timeline__item">
+            <span class="timeline__dot"></span>
+            <span class="timeline__date">May 2023 · ~1 año</span>
+            <h3 class="timeline__role">Ayudante General y Andamiero</h3>
+            <p class="timeline__org">Grupo México · Valle Esmeralda, Altamira</p>
+            <p class="timeline__desc">
+              Montaje de estructura para tubería y obra eléctrica; armado de andamios de 5–6 plantas
+              anclados a vigas. Operación de manlift y Genie; pistola de impacto y pulidor eléctrico.
+            </p>
+          </div>
+
+          <div class="timeline__item">
+            <span class="timeline__dot"></span>
+            <span class="timeline__date">Jun 2022 · ~1 año</span>
+            <h3 class="timeline__role">Pailero Tipo A</h3>
+            <p class="timeline__org">Águila · Valle Esmeralda, Altamira</p>
+            <p class="timeline__desc">
+              Taller de fabricación para ensambles y uso de equipo de corte. Punteo de barandales
+              con inversora en galvanizado, acero al carbón e inoxidable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░ DESARROLLO DE SOFTWARE ░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section class="section section--alt" id="software">
+      <div class="container">
+        <p class="section__kicker">04 — Desarrollo de software</p>
+        <h2 class="section__title">Páginas web y aplicaciones (APK)</h2>
+        <p class="lead reveal">
+          La parte de <strong>Sistemas</strong> de mi carrera me llevó a la programación. Desarrollo
+          <strong>páginas web</strong> (React + Django/Python) y <strong>aplicaciones Android (APK)</strong>
+          con Android Studio, apoyándome en herramientas de IA para llevar cada idea desde el cero
+          hasta una versión funcional en uso.
+        </p>
+
+        <div class="projects">
+          <article class="project reveal">
+            <div class="project__thumb project__thumb--1"><span>📱</span></div>
+            <div class="project__body">
+              <h3 class="project__title">Aplicaciones Android (APK)</h3>
+              <p class="project__desc">
+                Apps móviles desarrolladas con Android Studio, generando el APK y llevándolas desde
+                la idea hasta una versión funcional en uso.
+              </p>
+              <div class="tags tags--sm">
+                <span class="tag">Android Studio</span>
+                <span class="tag">APK</span>
+                <span class="tag">Apps móviles</span>
+              </div>
+              <div class="project__links">
+                <a href="#contacto">Disponible a solicitud →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project__thumb project__thumb--2"><span>🌐</span></div>
+            <div class="project__body">
+              <h3 class="project__title">Páginas y apps web</h3>
+              <p class="project__desc">
+                Sitios y aplicaciones web funcionales construidos con React en el frontend y
+                Django/Python en el backend.
+              </p>
+              <div class="tags tags--sm">
+                <span class="tag">React</span>
+                <span class="tag">Django</span>
+                <span class="tag">Python</span>
+                <span class="tag">HTML</span>
+              </div>
+              <div class="project__links">
+                <a href="#contacto">Disponible a solicitud →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project__thumb project__thumb--3"><span>🤖</span></div>
+            <div class="project__body">
+              <h3 class="project__title">IA, ESP32 e IoT</h3>
+              <p class="project__desc">
+                Uso de herramientas de IA para resolver problemas y acelerar el desarrollo, y
+                proyectos con microcontroladores ESP32 que conectan el software con el mundo físico.
+              </p>
+              <div class="tags tags--sm">
+                <span class="tag">ChatGPT</span>
+                <span class="tag">Copilot</span>
+                <span class="tag">ESP32</span>
+              </div>
+              <div class="project__links">
+                <a href="#contacto">Disponible a solicitud →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░ DISEÑO 3D ░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section class="section" id="diseno3d">
+      <div class="container">
+        <p class="section__kicker">05 — Diseño 3D</p>
+        <h2 class="section__title">Diseño industrial en 3D</h2>
+        <p class="lead reveal">
+          Con <strong>AutoCAD</strong> modelo <strong>tanques</strong>, <strong>dados de colado
+          (obra civil)</strong>, <strong>obra mecánica</strong>, <strong>casas de bombas</strong> y
+          <strong>techados de taller</strong>.
+          <strong>Desplázate</strong> para recorrer cada diseño en 3D; gíralo con el dedo o el ratón,
+          y desde el móvil puedes incluso <strong>verlo en realidad aumentada (AR)</strong>.
+        </p>
+
+        <div class="showcase">
+          <!-- Visor 3D fijo: cambia solo al hacer scroll -->
+          <div class="showcase__viewer">
+            <model-viewer
+              class="viewer3d"
+              id="mv3d"
+              src="assets/tanque.glb"
+              alt="Tanque industrial"
+              loading="eager"
+              camera-controls
+              auto-rotate
+              auto-rotate-delay="0"
+              rotation-per-second="16deg"
+              ar
+              ar-modes="webxr scene-viewer quick-look"
+              shadow-intensity="1"
+              exposure="1"
+              camera-orbit="30deg 80deg auto"
+              field-of-view="32deg"
+              interaction-prompt="auto">
+              <button slot="ar-button" class="ar-btn">📱 Ver en tu espacio (AR)</button>
+              <div slot="poster" class="viewer3d__poster">Cargando modelo 3D…</div>
+            </model-viewer>
+            <div class="showcase__dots" aria-hidden="true">
+              <span class="showcase__dot is-active"></span>
+              <span class="showcase__dot"></span>
+              <span class="showcase__dot"></span>
+              <span class="showcase__dot"></span>
+              <span class="showcase__dot"></span>
+            </div>
+            <p class="viewer3d__hint">Desplázate para cambiar de modelo · arrastra para girar · AR en el móvil</p>
+          </div>
+
+          <!-- Pasos: cada uno activa su modelo al entrar en pantalla -->
+          <div class="showcase__steps">
+            <article class="showcase__step is-active" data-model="assets/tanque.glb" data-orbit="30deg 80deg auto">
+              <span class="showcase__num">01 / 05</span>
+              <h3>Tanque industrial</h3>
+              <p>Tanque de almacenamiento: cuerpo cilíndrico, techo cónico con barandal, costuras de soldadura, escalera de acceso, boquillas y bridas.</p>
+            </article>
+            <article class="showcase__step" data-model="assets/obra-civil.glb" data-orbit="40deg 70deg auto">
+              <span class="showcase__num">02 / 05</span>
+              <h3>Obra civil — dados de colado</h3>
+              <p>Cimentación con zapatas escalonadas, anclas, armado de varilla con estribos y cimbra. Del trazo al colado.</p>
+            </article>
+            <article class="showcase__step" data-model="assets/obra-mecanica.glb" data-orbit="45deg 72deg auto">
+              <span class="showcase__num">03 / 05</span>
+              <h3>Obra mecánica — tubería</h3>
+              <p>Rack de tubería con estructura de soporte, válvula con volante, bridas y codos. Montaje mecánico industrial.</p>
+            </article>
+            <article class="showcase__step" data-model="assets/casa-bombas.glb" data-orbit="42deg 76deg auto">
+              <span class="showcase__num">04 / 05</span>
+              <h3>Casa de bombas</h3>
+              <p>Estación de bombeo: bombas centrífugas (motor y voluta) sobre skid, colectores de succión y descarga, válvulas con volante, tablero eléctrico y estructura techada.</p>
+            </article>
+            <article class="showcase__step" data-model="assets/techado-taller.glb" data-orbit="46deg 70deg auto">
+              <span class="showcase__num">05 / 05</span>
+              <h3>Techado de taller</h3>
+              <p>Estructura de techo a dos aguas: columnas, zapatas, cerchas, largueros y lámina. Naves y talleres.</p>
+            </article>
+          </div>
+        </div>
+
+        <p class="showcase__note">Modelos de muestra creados para esta demo · próximamente, mis propios diseños de AutoCAD.</p>
+      </div>
+    </section>
+
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░ FORMACIÓN Y CERTIFICACIONES ░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section class="section section--alt" id="formacion">
+      <div class="container">
+        <p class="section__kicker">06 — Formación y certificaciones</p>
+        <h2 class="section__title">Formación y certificaciones</h2>
+
+        <div class="skills reveal">
+          <div class="skill-group">
+            <h3>🎓 Formación académica</h3>
+            <ul class="card-list">
+              <li>
+                <strong>Ingeniería Industrial y de Sistemas</strong>
+                Universidad Interamericana del Norte (carta pasante)
+              </li>
+              <li>
+                <strong>Laboratorista Químico</strong>
+                CBTIS 105
+              </li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>🦺 Certificaciones de seguridad</h3>
+            <div class="tags">
+              <span class="tag">DC-3 Armado seguro de andamios</span>
+              <span class="tag">DC-3 Trabajo en alturas</span>
+              <span class="tag">Inducción de seguridad industrial</span>
+              <span class="tag">Credencial de andamiero</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>📄 Documentación</h3>
+            <ul class="card-list">
+              <li>
+                <strong>Carta pasante</strong>
+                Ingeniería Industrial y de Sistemas
+              </li>
+              <li>
+                <strong>Cartas de recomendación</strong>
+                Disponibles a solicitud
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░░░░░░░░░░░░░░░░░░░░░░ CONTACTO ░░░░░░░░░░░░░░░░░░░░░░░ -->
+    <section class="section" id="contacto">
+      <div class="container contacto">
+        <p class="section__kicker">07 — Contacto</p>
+        <h2 class="section__title">¿Hablamos?</h2>
+        <p class="contacto__lead reveal">
+          Estoy disponible para nuevas oportunidades —en la industria o en desarrollo de software—
+          y con disponibilidad para viajar a cualquier lugar. Escríbeme y te respondo pronto.
+        </p>
+
+        <div class="contacto__cards reveal">
+          <a class="contact-card" href="mailto:kikinmanfred@gmail.com">
+            <span class="contact-card__icon">✉️</span>
+            <span class="contact-card__label">Email</span>
+            <span class="contact-card__value">kikinmanfred@gmail.com</span>
+          </a>
+          <a class="contact-card" href="https://wa.me/528146015247" target="_blank" rel="noopener">
+            <span class="contact-card__icon">💬</span>
+            <span class="contact-card__label">WhatsApp / Tel</span>
+            <span class="contact-card__value">814 601 5247</span>
+          </a>
+          <a class="contact-card" href="https://maps.google.com/?q=Altamira,Tamaulipas" target="_blank" rel="noopener">
+            <span class="contact-card__icon">📍</span>
+            <span class="contact-card__label">Ubicación</span>
+            <span class="contact-card__value">Altamira, Tamaulipas, México</span>
+          </a>
+        </div>
+
+        <a href="cv/CV_Christopher_Gomez_Martinez.pdf" class="btn btn--primary contacto__cv" download>⬇ Descargar mi CV</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ░░░░░░░░░░░░░░░░░░░░░░░ FOOTER ░░░░░░░░░░░░░░░░░░░░░░░ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Christopher Gómez Martínez · Industrial + Software</p>
+      <a href="#inicio" class="footer__top">Volver arriba ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
