@@ -458,6 +458,16 @@
               <span class="showcase__dot"></span>
             </div>
             <p class="viewer3d__hint">Desplázate para cambiar de modelo · arrastra para girar · AR en el móvil</p>
+
+            <!-- Control del modelo con la mano (cámara + detección de manos) -->
+            <div class="hand">
+              <button id="handBtn" class="hand__btn" type="button">✋ Controlar con la mano</button>
+              <div id="handCam" class="hand__cam" hidden>
+                <video id="handVideo" playsinline muted></video>
+                <span id="handStatus" class="hand__status"></span>
+              </div>
+              <p class="hand__hint">Mueve la mano para <strong>girar</strong> el modelo · <strong>pellizca</strong> (pulgar + índice) para acercar/alejar.</p>
+            </div>
           </div>
 
           <!-- Pasos: cada uno activa su modelo al entrar en pantalla -->
@@ -599,5 +609,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="hand-control.js"></script>
 </body>
 </html>
