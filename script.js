@@ -130,6 +130,7 @@ if (hero3d) {
     { src: 'assets/obra-mecanica.glb', orbit: '45deg 72deg auto' },
     { src: 'assets/casa-bombas.glb', orbit: '42deg 76deg auto' },
     { src: 'assets/techado-taller.glb', orbit: '46deg 70deg auto' },
+    { src: 'assets/excavadora.glb', orbit: '25deg 80deg auto' },
   ];
   let heroIdx = 0;
   setInterval(() => {
