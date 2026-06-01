@@ -462,16 +462,6 @@
             </div>
             <p class="viewer3d__hint">Desplázate para cambiar de modelo · arrastra para girar · en el móvil, pulsa <strong>AR</strong>, apunta al <strong>piso</strong> y camina alrededor de la figura</p>
 
-            <!-- Control del modelo con la mano (cámara + detección de manos) -->
-            <div class="hand">
-              <button id="handBtn" class="hand__btn" type="button">✋ Controlar con la mano</button>
-              <div id="handCam" class="hand__cam" hidden>
-                <video id="handVideo" playsinline muted></video>
-                <span id="handStatus" class="hand__status"></span>
-              </div>
-              <p class="hand__hint">Mueve la mano para <strong>girar</strong> el modelo · <strong>pellizca</strong> (pulgar + índice) para acercar/alejar.</p>
-            </div>
-
             <!-- Experiencia AR: decorar el piso (WebXR) -->
             <div class="hand">
               <a href="ar-piso.html" class="hand__btn hand__btn--ar">🪄 Decorar el piso (AR)</a>
@@ -618,6 +608,5 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="hand-control.js"></script>
 </body>
 </html>
