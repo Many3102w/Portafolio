@@ -128,7 +128,7 @@
   panel.innerHTML =
     '<header class="asst-head">' +
       ORB +
-      '<span class="asst-head__id"><strong>Inge Christopher</strong><small>Asistente · estilo J.A.R.V.I.S. · en línea</small></span>' +
+      '<span class="asst-head__id"><strong>Inge Christopher</strong><small>Asistente del portafolio · en línea</small></span>' +
       '<button class="asst-head__voice" id="asstVoice" type="button" aria-label="Activar o silenciar voz" title="Voz">🔊</button>' +
       '<button class="asst-head__x" type="button" aria-label="Cerrar">✕</button>' +
     '</header>' +
@@ -324,7 +324,7 @@
     initOrb();
     if (!greeted) {
       greeted = true;
-      botReply('Sistemas en línea. ⚡ Soy <b>Inge Christopher</b>, su asistente.<br><b>¿En qué puedo ayudarle?</b>');
+      botReply('¡Hola! 👋 Soy <b>Inge Christopher</b>, su asistente.<br><b>¿En qué puedo ayudarle?</b>');
       setTimeout(() => addMsg('Toque un tema, escriba su pregunta o use el 🎤 para hablarme.', 'bot'), 900);
     }
     setTimeout(() => input.focus(), 120);
