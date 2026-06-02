@@ -84,12 +84,13 @@ a { color: inherit; text-decoration: none; }
     radial-gradient(620px 320px at 82% 8%, rgba(47, 129, 255, 0.18), transparent 70%),
     radial-gradient(520px 320px at 8% 92%, rgba(84, 185, 255, 0.10), transparent 70%);
 }
-/* Foto de fondo del hero: detrás del contenido, difuminada hacia abajo
-   (se desvanece ~a la mitad del círculo) para que no cubra todo. */
+/* Foto de fondo del hero: es un DIV con background-image (no un <img>),
+   así nunca empuja el contenido. Detrás de todo (z-index 0) y difuminada
+   hacia abajo (~a la mitad del círculo) para que no cubra todo. */
 .hero__bgphoto {
   position: absolute; top: 0; left: 50%; transform: translateX(-50%);
   width: 100%; max-width: 760px; height: 56%;
-  object-fit: cover; object-position: center 28%;
+  background: url('assets/christopher.jpg') center 28% / cover no-repeat;
   z-index: 0; opacity: 0.42; pointer-events: none;
   -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 32%, transparent 78%);
           mask-image: linear-gradient(to bottom, #000 0, #000 32%, transparent 78%);
