@@ -127,6 +127,7 @@ if (hero3d) {
   const HERO_MODELS = [
     { src: 'assets/tanque.glb', orbit: '30deg 78deg auto' },
     { src: 'assets/obra-civil.glb', orbit: '40deg 70deg auto' },
+    { src: 'assets/colado.glb', orbit: '32deg 68deg auto' },
     { src: 'assets/obra-mecanica.glb', orbit: '45deg 72deg auto' },
     { src: 'assets/casa-bombas.glb', orbit: '42deg 76deg auto' },
     { src: 'assets/techado-taller.glb', orbit: '46deg 70deg auto' },
