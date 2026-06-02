@@ -123,12 +123,14 @@
     '<header class="asst-head">' +
       '<span class="asst-head__ava">👷</span>' +
       '<span class="asst-head__id"><strong>Inge Christopher</strong><small>Asistente del portafolio · en línea</small></span>' +
+      '<button class="asst-head__voice" id="asstVoice" type="button" aria-label="Activar o silenciar voz" title="Voz">🔊</button>' +
       '<button class="asst-head__x" type="button" aria-label="Cerrar">✕</button>' +
     '</header>' +
     '<div class="asst-body" id="asstBody"></div>' +
     '<div class="asst-quick" id="asstQuick"></div>' +
     '<form class="asst-input" id="asstForm" autocomplete="off">' +
-      '<input id="asstText" type="text" placeholder="Escribe tu pregunta…" aria-label="Escribe tu pregunta" />' +
+      '<button class="asst-mic" id="asstMic" type="button" aria-label="Hablar por voz" title="Hablar">🎤</button>' +
+      '<input id="asstText" type="text" placeholder="Escribe o habla tu pregunta…" aria-label="Escribe tu pregunta" />' +
       '<button type="submit" aria-label="Enviar">➤</button>' +
     '</form>';
 
@@ -139,6 +141,62 @@
   const quick = panel.querySelector('#asstQuick');
   const form = panel.querySelector('#asstForm');
   const input = panel.querySelector('#asstText');
+  const voiceBtn = panel.querySelector('#asstVoice');
+  const micBtn = panel.querySelector('#asstMic');
+
+  // ── Voz: leer las respuestas en voz alta (text-to-speech) ───────
+  let voiceOn = true;
+  const synth = window.speechSynthesis;
+  const stripper = document.createElement('div');
+  function toSpeech(html) {
+    stripper.innerHTML = html;
+    let t = stripper.textContent || '';
+    // quita URLs y símbolos/emojis que no conviene leer
+    t = t.replace(/https?:\/\/\S+/g, '').replace(/[•👷🔧💻📞✉️📍✈️👉⬇✅🤔👋🎉🔊🔇🎤]/g, ' ');
+    return t.replace(/\s+/g, ' ').trim();
+  }
+  function pickVoice() {
+    const vs = synth ? synth.getVoices() : [];
+    return vs.find((v) => /^es(-|_)?mx/i.test(v.lang)) ||
+           vs.find((v) => /^es(-|_|$)/i.test(v.lang)) || null;
+  }
+  function speak(text) {
+    if (!voiceOn || !synth || !text) return;
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'es-MX'; u.rate = 1; u.pitch = 1;
+    const v = pickVoice(); if (v) u.voice = v;
+    synth.speak(u);
+  }
+  if (synth) synth.onvoiceschanged = pickVoice; // precarga voces
+
+  voiceBtn.addEventListener('click', () => {
+    voiceOn = !voiceOn;
+    voiceBtn.textContent = voiceOn ? '🔊' : '🔇';
+    voiceBtn.classList.toggle('is-off', !voiceOn);
+    if (!voiceOn && synth) synth.cancel();
+  });
+
+  // ── Micrófono: hablarle al asistente (speech-to-text) ───────────
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let recog = null, listening = false;
+  if (SR) {
+    recog = new SR();
+    recog.lang = 'es-MX'; recog.interimResults = false; recog.maxAlternatives = 1;
+    recog.onresult = (e) => {
+      const said = e.results[0][0].transcript;
+      send(said);
+    };
+    recog.onend = () => { listening = false; micBtn.classList.remove('is-listening'); };
+    recog.onerror = () => { listening = false; micBtn.classList.remove('is-listening'); };
+    micBtn.addEventListener('click', () => {
+      if (listening) { recog.stop(); return; }
+      if (synth) synth.cancel();          // no escucharse a sí mismo
+      try { recog.start(); listening = true; micBtn.classList.add('is-listening'); } catch (_) {}
+    });
+  } else {
+    micBtn.style.display = 'none';        // navegador sin reconocimiento de voz
+  }
 
   function addMsg(content, who) {
     const m = document.createElement('div');
@@ -151,7 +209,11 @@
 
   function botReply(content) {
     const typing = addMsg('<span class="asst-typing"><i></i><i></i><i></i></span>', 'bot');
-    setTimeout(() => { typing.innerHTML = content; body.scrollTop = body.scrollHeight; }, 380);
+    setTimeout(() => {
+      typing.innerHTML = content;
+      body.scrollTop = body.scrollHeight;
+      speak(toSpeech(content));
+    }, 380);
   }
 
   function send(text) {
