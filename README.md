@@ -89,8 +89,8 @@ Los modelos de muestra se generaron con **trimesh**:
 navegador, sin servidor ni API: coincidencia por temas a partir del contenido real del CV.
 Incluye **voz**: lee sus respuestas en voz alta (text-to-speech) y permite **hablarle por
 micrófono** (speech-to-text) con la Web Speech API. La voz se puede silenciar con el botón 🔊.
-Estilo **J.A.R.V.I.S.** con un **orbe 3D de energía (Three.js)** en la cabecera que gira más
-rápido cuando habla. Para editar sus respuestas, ajusta el arreglo `KB` dentro de `asistente.js`.
+Incluye un **orbe 3D de energía (Three.js)** en la cabecera que gira más rápido cuando habla.
+Para editar sus respuestas, ajusta el arreglo `KB` dentro de `asistente.js`.
 
 **Interacción extra del visor 3D:**
 - **Etiquetas de partes** (botón “🏷️ Mostrar etiquetas”): hotspots 3D anclados al
