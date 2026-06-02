@@ -84,13 +84,6 @@ Los modelos de muestra se generaron con **trimesh**:
 - `generar_placas.py` → placas electrónicas ESP32 y DWM1001-DEV (PCB)
 - `generar_modelo.py` → torre
 
-**Asistente “Inge Christopher”** (`asistente.js`): chat flotante que responde sobre el CV
-(perfil, experiencia, habilidades, formación, diseños 3D y contacto). Funciona 100 % en el
-navegador, sin servidor ni API: coincidencia por temas a partir del contenido real del CV.
-Incluye **voz**: lee sus respuestas en voz alta (text-to-speech) y permite **hablarle por
-micrófono** (speech-to-text) con la Web Speech API. La voz se puede silenciar con el botón 🔊.
-Para editar sus respuestas, ajusta el arreglo `KB` dentro de `asistente.js`.
-
 **Interacción extra del visor 3D:**
 - **Etiquetas de partes** (botón “🏷️ Mostrar etiquetas”): hotspots 3D anclados al
   modelo que señalan cada componente (definidos en `script.js`, mapa `HOTSPOTS`).
