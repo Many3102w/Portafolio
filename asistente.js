@@ -113,7 +113,10 @@
   launcher.className = 'asst-launch';
   launcher.type = 'button';
   launcher.setAttribute('aria-label', 'Abrir asistente Inge Christopher');
-  launcher.innerHTML = '<span class="asst-launch__ava">👷</span><span class="asst-launch__txt">Inge Christopher</span>';
+  const CORE = '<span class="jarvis-core" aria-hidden="true">' +
+      '<span class="jarvis-core__ring"></span><span class="jarvis-core__ring"></span>' +
+      '<span class="jarvis-core__ring"></span><span class="jarvis-core__dot"></span></span>';
+  launcher.innerHTML = CORE + '<span class="asst-launch__txt">Inge Christopher</span>';
 
   const panel = document.createElement('section');
   panel.className = 'asst-panel';
@@ -121,8 +124,8 @@
   panel.hidden = true;
   panel.innerHTML =
     '<header class="asst-head">' +
-      '<span class="asst-head__ava">👷</span>' +
-      '<span class="asst-head__id"><strong>Inge Christopher</strong><small>Asistente del portafolio · en línea</small></span>' +
+      CORE +
+      '<span class="asst-head__id"><strong>Inge Christopher</strong><small>Asistente · estilo J.A.R.V.I.S. · en línea</small></span>' +
       '<button class="asst-head__voice" id="asstVoice" type="button" aria-label="Activar o silenciar voz" title="Voz">🔊</button>' +
       '<button class="asst-head__x" type="button" aria-label="Cerrar">✕</button>' +
     '</header>' +
@@ -166,6 +169,9 @@
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'es-MX'; u.rate = 1; u.pitch = 1;
     const v = pickVoice(); if (v) u.voice = v;
+    u.onstart = () => panel.classList.add('is-speaking');   // el reactor pulsa al hablar
+    u.onend = () => panel.classList.remove('is-speaking');
+    u.onerror = () => panel.classList.remove('is-speaking');
     synth.speak(u);
   }
   if (synth) synth.onvoiceschanged = pickVoice; // precarga voces
@@ -245,8 +251,8 @@
     launcher.classList.add('is-open');
     if (!greeted) {
       greeted = true;
-      botReply('¡Hola! 👷 Soy <b>Inge Christopher</b>, asistente de este portafolio.<br><b>¿En qué puedo ayudarle?</b>');
-      setTimeout(() => addMsg('Puedes tocar un tema de abajo o escribir tu pregunta. 👇', 'bot'), 760);
+      botReply('Sistemas en línea. ⚡ Soy <b>Inge Christopher</b>, su asistente.<br><b>¿En qué puedo ayudarle?</b>');
+      setTimeout(() => addMsg('Toque un tema, escriba su pregunta o use el 🎤 para hablarme.', 'bot'), 900);
     }
     setTimeout(() => input.focus(), 120);
   }
