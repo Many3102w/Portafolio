@@ -342,3 +342,65 @@ a { color: inherit; text-decoration: none; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1 !important; transform: none !important; }
 }
+
+/* ═══════════════ Asistente "Inge Christopher" ═══════════════ */
+.asst-launch {
+  position: fixed; right: 18px; bottom: 18px; z-index: 9998;
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--grad); color: #fff; border: 0; cursor: pointer;
+  padding: 11px 18px 11px 12px; border-radius: 999px; font-weight: 700; font-size: 0.95rem;
+  box-shadow: 0 16px 40px -12px rgba(47,129,255,.7); transition: transform .2s, box-shadow .2s;
+}
+.asst-launch:hover { transform: translateY(-3px); }
+.asst-launch.is-open { transform: scale(.9); opacity: .85; }
+.asst-launch__ava { width: 30px; height: 30px; display: grid; place-items: center;
+  background: rgba(255,255,255,.2); border-radius: 50%; font-size: 1.05rem; }
+
+.asst-panel {
+  position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+  width: min(360px, calc(100vw - 28px)); height: min(520px, calc(100vh - 36px));
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--surface); border-radius: 18px;
+  box-shadow: 0 30px 70px -20px rgba(0,0,0,.85); border: 1px solid rgba(255,255,255,.06);
+  animation: asstIn .22s ease;
+}
+@keyframes asstIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+.asst-head { display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+  background: linear-gradient(135deg, rgba(47,129,255,.22), rgba(84,185,255,.12)); }
+.asst-head__ava { width: 38px; height: 38px; display: grid; place-items: center;
+  background: var(--grad); border-radius: 50%; font-size: 1.2rem; }
+.asst-head__id { display: flex; flex-direction: column; line-height: 1.2; flex: 1; }
+.asst-head__id small { color: var(--muted); font-size: 0.74rem; }
+.asst-head__x { background: transparent; border: 0; color: var(--muted); font-size: 1rem; cursor: pointer; padding: 6px; }
+.asst-head__x:hover { color: #fff; }
+
+.asst-body { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 9px; }
+.asst-msg { max-width: 84%; padding: 9px 13px; border-radius: 14px; font-size: 0.9rem; line-height: 1.45; }
+.asst-msg--bot { align-self: flex-start; background: var(--surface-2); color: var(--text); border-bottom-left-radius: 4px; }
+.asst-msg--user { align-self: flex-end; background: var(--grad); color: #fff; border-bottom-right-radius: 4px; }
+.asst-msg a { color: var(--accent-2); font-weight: 600; }
+.asst-msg--user a { color: #fff; text-decoration: underline; }
+
+.asst-typing { display: inline-flex; gap: 4px; }
+.asst-typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); animation: asstBlink 1s infinite; }
+.asst-typing i:nth-child(2) { animation-delay: .15s; } .asst-typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes asstBlink { 0%, 60%, 100% { opacity: .25; } 30% { opacity: 1; } }
+
+.asst-quick { display: flex; gap: 7px; padding: 8px 12px; overflow-x: auto; border-top: 1px solid rgba(255,255,255,.05); }
+.asst-chip { flex: 0 0 auto; background: var(--surface-2); color: var(--text); border: 0; cursor: pointer;
+  padding: 7px 13px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; transition: background .2s; }
+.asst-chip:hover { background: #232936; }
+
+.asst-input { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid rgba(255,255,255,.05); }
+.asst-input input { flex: 1; background: var(--surface-2); border: 0; border-radius: 999px; color: var(--text);
+  padding: 11px 15px; font-size: 0.9rem; outline: none; }
+.asst-input input::placeholder { color: var(--muted); }
+.asst-input button { background: var(--grad); color: #fff; border: 0; border-radius: 50%; width: 40px; height: 40px;
+  cursor: pointer; font-size: 1rem; flex: 0 0 auto; }
+
+@media (max-width: 520px) {
+  .asst-launch__txt { display: none; }
+  .asst-launch { padding: 12px; }
+  .asst-panel { right: 10px; bottom: 10px; width: calc(100vw - 20px); height: min(72vh, calc(100vh - 20px)); }
+}
