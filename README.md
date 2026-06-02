@@ -85,6 +85,8 @@ Los modelos de muestra se generaron con **trimesh**:
 - `generar_modelo.py` → torre
 
 **Interacción extra del visor 3D:**
+- **Etiquetas de partes** (botón “🏷️ Mostrar etiquetas”): hotspots 3D anclados al
+  modelo que señalan cada componente (definidos en `script.js`, mapa `HOTSPOTS`).
 - **Decorar el piso en AR** (`ar-piso.html`): experiencia WebXR (Three.js) que detecta
   el suelo y deja caer figuras decorativas al tocar la pantalla. Requiere Android + Chrome
   con ARCore (gratis, sin librerías de pago).

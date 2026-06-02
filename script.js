@@ -83,6 +83,86 @@ if (modelViewer && steps.length) {
   let currentModel = modelViewer.getAttribute('src');
   let stepObserver = null;
 
+  // ── Etiquetas 3D (hotspots): partes/cotas ancladas a cada modelo ──
+  // Posición "x y z" en metros, en el espacio del modelo (Y arriba).
+  const HOTSPOTS = {
+    'assets/obra-civil.glb': [
+      { p: '0 0.30 0', t: 'Losa de cimentación' },
+      { p: '-2.2 0.75 1.3', t: 'Zapata escalonada' },
+      { p: '2.2 1.7 -1.3', t: 'Armado de varilla (estribos)' },
+    ],
+    'assets/colado.glb': [
+      { p: '1.2 0.13 0', t: 'Malla electrosoldada (armado)' },
+      { p: '-1.1 0.24 0', t: 'Concreto colado y nivelado' },
+      { p: '0.4 0.27 0', t: 'Regla niveladora / riel guía' },
+    ],
+    'assets/techado-taller.glb': [
+      { p: '3.1 1.5 2', t: 'Columna + placa base' },
+      { p: '0 3.7 0', t: 'Cercha (armadura)' },
+      { p: '0 3.7 1.0', t: 'Lámina de techo' },
+    ],
+    'assets/tanque.glb': [
+      { p: '0 6.0 0', t: 'Techo cónico' },
+      { p: '2.42 3.0 0', t: 'Cuerpo (virola)' },
+      { p: '-2.56 1.5 0', t: 'Escalera de acceso' },
+    ],
+    'assets/obra-mecanica.glb': [
+      { p: '0 3.45 -0.6', t: 'Tubería de proceso' },
+      { p: '0 4.0 -0.6', t: 'Válvula con volante' },
+      { p: '3 1.5 1.1', t: 'Rack de soporte' },
+    ],
+    'assets/casa-bombas.glb': [
+      { p: '1.15 0.95 0', t: 'Bomba (motor + voluta)' },
+      { p: '0 2.3 0.2', t: 'Colector de descarga' },
+      { p: '2.05 1.0 -1.18', t: 'Tablero eléctrico' },
+    ],
+    'assets/excavadora.glb': [
+      { p: '0.35 1.66 0.72', t: 'Cabina del operador' },
+      { p: '-1.45 1.61 0', t: 'Contrapeso' },
+      { p: '5.0 0.5 0', t: 'Cucharón' },
+    ],
+    'assets/esp32.glb': [
+      { p: '-1.25 0.39 0', t: 'Módulo RF (WROOM-32)' },
+      { p: '-2.25 0.11 0', t: 'Antena de PCB' },
+      { p: '2.45 0.26 0', t: 'Conector micro-USB' },
+    ],
+    'assets/dwm1001-dev.glb': [
+      { p: '3.0 0.35 0', t: 'Módulo UWB (DWM1001C)' },
+      { p: '4.25 0.20 0.45', t: 'Antena chip (UWB)' },
+      { p: '-3.0 0.17 0', t: 'Debugger J-Link' },
+    ],
+  };
+
+  const labelsBtn = document.getElementById('labelsBtn');
+  let labelsOn = false;
+
+  const applyHotspots = (model) => {
+    // Limpia los hotspots anteriores
+    modelViewer.querySelectorAll('[slot^="hotspot-"]').forEach((el) => el.remove());
+    if (!labelsOn) return;
+    const list = HOTSPOTS[model] || [];
+    list.forEach((h, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'hotspot';
+      btn.setAttribute('slot', `hotspot-${i}`);
+      btn.setAttribute('data-position', h.p);
+      const label = document.createElement('span');
+      label.className = 'hotspot__label';
+      label.textContent = h.t;
+      btn.appendChild(label);
+      modelViewer.appendChild(btn);
+    });
+  };
+
+  if (labelsBtn) {
+    labelsBtn.addEventListener('click', () => {
+      labelsOn = !labelsOn;
+      labelsBtn.classList.toggle('is-active', labelsOn);
+      labelsBtn.textContent = labelsOn ? '🏷️ Ocultar etiquetas' : '🏷️ Mostrar etiquetas';
+      applyHotspots(currentModel);
+    });
+  }
+
   const activate = (step) => {
     const idx = [...steps].indexOf(step);
     steps.forEach((s) => s.classList.remove('is-active'));
@@ -96,6 +176,7 @@ if (modelViewer && steps.length) {
       if (step.dataset.orbit) modelViewer.setAttribute('camera-orbit', step.dataset.orbit);
       const heading = step.querySelector('h3');
       if (heading) modelViewer.setAttribute('alt', heading.textContent);
+      applyHotspots(model);
     }
   };
 
