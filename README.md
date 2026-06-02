@@ -66,6 +66,7 @@ pantalla. Modelos de muestra:
 |---|---|
 | 🛢️ Tanque industrial | `assets/tanque.glb` |
 | 🧱 Obra civil (dados de colado) | `assets/obra-civil.glb` |
+| 🧱 Colado de losa / firme | `assets/colado.glb` |
 | ⚙️ Obra mecánica (tubería) | `assets/obra-mecanica.glb` |
 | 🚰 Casa de bombas | `assets/casa-bombas.glb` |
 | 🏭 Techado de taller | `assets/techado-taller.glb` |
@@ -78,6 +79,7 @@ Los modelos de muestra se generaron con **trimesh**:
 - `generar_modelos_industriales.py` → tanque y obra mecánica
 - `generar_modelos_obra.py` → obra civil (dados de colado) y techado de taller
 - `generar_casa_bombas.py` → casa de bombas
+- `generar_colado.py` → colado de losa/firme (base, malla, concreto, regla)
 - `generar_excavadora.py` → excavadora hidráulica sobre orugas (estilo DEVELON)
 - `generar_placas.py` → placas electrónicas ESP32 y DWM1001-DEV (PCB)
 - `generar_modelo.py` → torre

@@ -195,6 +195,19 @@ a { color: inherit; text-decoration: none; }
 .showcase__step { min-height: 66vh; display: flex; flex-direction: column; justify-content: center; gap: 12px; opacity: 0.28; transition: opacity .45s ease; }
 .showcase__step.is-active { opacity: 1; }
 .showcase__num { font-family: 'JetBrains Mono', monospace; color: var(--accent-2); font-size: 0.85rem; letter-spacing: 0.08em; }
+/* Chip de disciplina: ubica el modelo de un vistazo */
+.showcase__tag {
+  align-self: flex-start; display: inline-flex; align-items: center;
+  padding: 4px 12px; border-radius: 999px; font-size: 0.74rem; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase; color: #fff;
+  background: var(--surface-2); border: 1px solid rgba(255,255,255,.08);
+}
+.showcase__tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; margin-right: 7px; background: currentColor; }
+.showcase__tag--civil   { color: #ff9f43; }
+.showcase__tag--estruct { color: #54b9ff; }
+.showcase__tag--mec     { color: #33d9a6; }
+.showcase__tag--maq     { color: #ffd23f; }
+.showcase__tag--elec    { color: #9b7bff; }
 .showcase__step h3 { font-size: clamp(1.4rem, 3vw, 1.95rem); font-weight: 800; letter-spacing: -0.01em; color: #fff; }
 .showcase__step p { color: var(--muted); max-width: 460px; font-size: 1.02rem; }
 .showcase__dots { display: flex; justify-content: center; gap: 9px; margin-top: 16px; }
@@ -279,6 +292,7 @@ a { color: inherit; text-decoration: none; }
   .viewer3d { height: 44vh; min-height: 300px; }
   .showcase__step { min-height: 50vh; text-align: center; align-items: center; }
   .showcase__step p { margin-inline: auto; }
+  .showcase__tag { align-self: center; }
 }
 
 @media (max-width: 640px) {
